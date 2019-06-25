@@ -42,13 +42,13 @@ public class player : MonoBehaviour
     {
         isopgrond = Physics2D.OverlapCircle(grondok.position, okradius, grondwatis);
 
-        if(Input.GetKeyDown(KeyCode.W)/*|| Input.GetKeyDown(KeyCode.UpArrow)*/ && jumpsjumpies >0)
+        if(Input.GetKeyDown(KeyCode.W) && jumpsjumpies >0|| Input.GetKeyDown(KeyCode.UpArrow) && jumpsjumpies >0)
         {
             rb.velocity = Vector2.up * jumpforce;
             jumpsjumpies--;
 
         }
-        else if (Input.GetKeyDown(KeyCode.W) /*|| Input.GetKeyDown(KeyCode.UpArrow)*/ && jumpsjumpies <= 0 && isopgrond == true)
+        else if (Input.GetKeyDown(KeyCode.W) && jumpsjumpies<=0 && isopgrond == true|| Input.GetKeyDown(KeyCode.UpArrow) && jumpsjumpies <= 0 && isopgrond == true)
         {
             rb.velocity = Vector2.up * jumpforce;
             
