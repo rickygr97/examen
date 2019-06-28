@@ -19,6 +19,8 @@ public class player : MonoBehaviour
     int jumpforce;
 
     int extrajump;
+    Animator an;
+
 
 
 
@@ -32,6 +34,7 @@ public class player : MonoBehaviour
         rb = GetComponent<Rigidbody2D>();
         extrajump = 1;
         jumpforce = 5;
+        an = this.gameObject.GetComponent<Animator>();
 
 
 
@@ -67,13 +70,24 @@ public class player : MonoBehaviour
         #region characterleft
         if (facingleft == true && moveinput < 0)
         {
+           // an.SetBool("walks",true);
+
             flipcharacter();
 
         }
         if (facingleft == false && moveinput > 0)
         {
+           // an.SetBool("walks", true);
             flipcharacter();
 
+        }
+        if(moveinput > 0 || moveinput < 0)
+        {
+            an.SetBool("walks", true);
+        }
+        if(moveinput == 0)
+        {
+            an.SetBool("walks", false);
         }
         #endregion
         #region firstwhatif
