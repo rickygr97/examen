@@ -33,7 +33,7 @@ public class player : MonoBehaviour
         speed = 5;
         rb = GetComponent<Rigidbody2D>();
         extrajump = 1;
-        jumpforce = 5;
+        jumpforce = 7;
         an = this.gameObject.GetComponent<Animator>();
 
 

@@ -11,8 +11,14 @@ public class enemies : MonoBehaviour
 
     Rigidbody2D rb;
     int jumpforge;
-    Animator an;
-    bool facingleft;
+   protected Animator an;
+  protected  bool facingleft;
+
+    protected float startdis;
+    protected float enddis;
+    protected float attackdis;
+
+
 
 
 
@@ -26,13 +32,13 @@ public class enemies : MonoBehaviour
 
 
     // Start is called before the first frame update
-    void Start()
+   public virtual void Start()
     {
       //  target = gameObject.GetComponent<player>().transform;
         target = GameObject.FindGameObjectWithTag("Player").GetComponent<Transform>();
 
         rb = GetComponent<Rigidbody2D>();
-        jumpforge = 6;
+        jumpforge = 7;
         an = this.gameObject.GetComponent<Animator>();
 
 
@@ -42,16 +48,16 @@ public class enemies : MonoBehaviour
     }
 
     // Update is called once per frame
-    void Update()
+   public virtual void Update()
     {
-        if(target.transform.position.x > this.gameObject.transform.position.x && facingleft == false)
-        {
-            flipcharacter();
-        }
-        if (target.transform.position.x < this.gameObject.transform.position.x && facingleft == true)
-        {
-            flipcharacter();
-        }
+        //if(target.transform.position.x > this.gameObject.transform.position.x && facingleft == false)
+        //{
+        //    flipcharacter();
+        //}
+        //if (target.transform.position.x < this.gameObject.transform.position.x && facingleft == true)
+        //{
+        //    flipcharacter();
+        //}
 
         float dis = Vector2.Distance(transform.position, target.position);
 
@@ -59,30 +65,33 @@ public class enemies : MonoBehaviour
 
         isopgrond = Physics2D.OverlapCircle(grondok.position, okradius, grondwatis);
 
-        if (dis > 1.1 && isopgrond && dis < 10)
+        if (dis > startdis && isopgrond && dis < enddis)
         {
             //walks
             transform.position = Vector2.Lerp(transform.position, target.position, enemieswalksspeed *Time.deltaTime);
-            an.SetBool("walks", true);
+            animationwalks();
 
             //
 
         }
         else
         {
-            an.SetBool("walks", false);
+            animationwalks2();
+
         }
-        if(dis < 1.5)
+        if(dis < attackdis)
         {
-            an.SetBool("attacks", true);
+            animationattack();
+
             //stop
         }
         else
         {
-            an.SetBool("attacks", false);
+            animationattack2();
+
         }
     }
-    void OnCollisionEnter2D(Collision2D col)
+   public virtual void OnCollisionEnter2D(Collision2D col)
     {
         if (col.collider.gameObject.CompareTag("grond"))
         {
@@ -91,12 +100,24 @@ public class enemies : MonoBehaviour
             rb.velocity = Vector2.up * jumpforge;
         }
     }
-    void flipcharacter()
+   public virtual void flipcharacter()
     {
         facingleft = !facingleft;
         Vector3 scaler = transform.localScale;
         scaler.x *= -1;
         transform.localScale = scaler;
 
+    }
+    public virtual void animationwalks()
+    {
+    }
+    public virtual void animationwalks2()
+    {
+    }
+    public virtual void animationattack()
+    {
+    }
+    public virtual void animationattack2()
+    {
     }
 }
