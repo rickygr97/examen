@@ -6,7 +6,7 @@ public class cubcake : enemies
 {
     public GameObject ise;
     public Transform iseposition;
-    public int isespeed = 30;
+    public int isespeed = 15;
     bool leftorright;
     bool spawn;
 

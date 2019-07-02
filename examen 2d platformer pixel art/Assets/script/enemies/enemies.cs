@@ -43,7 +43,7 @@ public class enemies : MonoBehaviour
 
 
 
-        enemieswalksspeed = 0.5f;
+        enemieswalksspeed = 3;
 
     }
 
@@ -68,7 +68,7 @@ public class enemies : MonoBehaviour
         if (dis > startdis && isopgrond && dis < enddis)
         {
             //walks
-            transform.position = Vector2.Lerp(transform.position, target.position, enemieswalksspeed *Time.deltaTime);
+            transform.position = Vector2.MoveTowards(transform.position, target.position, enemieswalksspeed *Time.deltaTime);
             animationwalks();
 
             //

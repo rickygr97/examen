@@ -1,6 +1,8 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.SceneManagement;
+
 
 public class player : MonoBehaviour
 {
@@ -18,8 +20,17 @@ public class player : MonoBehaviour
     public int jumpsjumpies;
     int jumpforce;
 
-    int extrajump;
+   public int extrajump;
     Animator an;
+
+    public int coins;
+    public int health;
+    public GameObject health_hearts1;
+    public GameObject health_hearts2;
+    public GameObject health_hearts3;
+    public int hearts;
+
+
 
 
 
@@ -32,9 +43,13 @@ public class player : MonoBehaviour
         komkommer = this.gameObject.GetComponent<SpriteRenderer>();
         speed = 5;
         rb = GetComponent<Rigidbody2D>();
-        extrajump = 1;
+        extrajump = 0;
         jumpforce = 7;
         an = this.gameObject.GetComponent<Animator>();
+
+
+        health = 3;
+        hearts = 3;
 
 
 
@@ -43,6 +58,43 @@ public class player : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
+        if(hearts == 3 && health ==2 )
+        {
+            health_hearts3.SetActive(false);
+            hearts = 2;
+
+
+        }
+        if (hearts == 2 && health == 1)
+        {
+            health_hearts2.SetActive(false);
+            hearts = 1;
+
+
+        }
+        if (hearts == 1 && health == 0)
+        {
+            hearts = 0;
+
+            health_hearts1.SetActive(false);
+            Debug.Log("0lives");
+
+
+        }
+        if(hearts == 2 && health == 2)
+        {
+            health_hearts2.SetActive(true);
+        }
+        if (hearts == 3 && health == 3)
+        {
+            health_hearts3.SetActive(true);
+        }
+        if(hearts >= 3 && health >= 3)
+        {
+            hearts = 3;
+            health = 3;
+
+        }
         isopgrond = Physics2D.OverlapCircle(grondok.position, okradius, grondwatis);
 
         if(Input.GetKeyDown(KeyCode.W) && jumpsjumpies >0|| Input.GetKeyDown(KeyCode.UpArrow) && jumpsjumpies >0)
