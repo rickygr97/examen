@@ -2,6 +2,8 @@
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
+using UnityEngine.SceneManagement;
+
 
 
 public class time : MonoBehaviour
@@ -27,6 +29,8 @@ public class time : MonoBehaviour
         if(timer <= 0)
         {
             timer = 0;
+
+            SceneManager.LoadScene(0);
 
             //af
             Debug.Log("af");

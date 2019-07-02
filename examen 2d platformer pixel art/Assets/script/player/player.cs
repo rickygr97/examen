@@ -78,6 +78,8 @@ public class player : MonoBehaviour
 
             health_hearts1.SetActive(false);
             Debug.Log("0lives");
+            SceneManager.LoadScene(0);
+
 
 
         }

@@ -4,12 +4,20 @@ using UnityEngine;
 
 public class hamburger : enemies
 {
+    public player player;
+    bool attackbool;
+
+
     public override void Start()
     {
         base.Start();
      startdis = 1.1f;
      enddis = 10;
      attackdis = 1.5f;
+        player = GetComponent<player>();
+        player = GameObject.FindObjectOfType<player>();
+
+
 }
     public override void Update()
     {
@@ -44,10 +52,25 @@ public class hamburger : enemies
     {
         base.animationattack();
         an.SetBool("attacks", true);
+        if(attackbool == true)
+        {
+        player.health --;
+        }
+        
+
+
     }
     public override void animationattack2()
     {
         base.animationattack2();
         an.SetBool("attacks", false);
+    }
+    IEnumerator attacksplayer()
+    {
+        attackbool = false;
+
+        yield return new WaitForSeconds(0.7f);
+        attackbool = true;
+
     }
 }
