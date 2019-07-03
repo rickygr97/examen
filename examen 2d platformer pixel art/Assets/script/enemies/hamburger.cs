@@ -4,8 +4,11 @@ using UnityEngine;
 
 public class hamburger : enemies
 {
-    public player player;
+    public GameObject player;
     bool attackbool;
+    public GameObject righthit;
+    public GameObject lefthit;
+
 
 
     public override void Start()
@@ -15,7 +18,14 @@ public class hamburger : enemies
      enddis = 10;
      attackdis = 1.5f;
         //player = GetComponent<player>();
-       // player = GameObject.FindObjectOfType<player>();
+        // player = GameObject.FindObjectOfType<player>();
+        player = GameObject.FindGameObjectWithTag("Player");
+        righthit.gameObject.active = true;
+        lefthit.gameObject.active = true;
+        attackbool = true;
+
+
+
 
 
 }
@@ -29,6 +39,11 @@ public class hamburger : enemies
         if (target.transform.position.x < this.gameObject.transform.position.x && facingleft == true)
         {
             flipcharacter();
+        }
+        if (attackbool)
+        {
+            StartCoroutine(attacksplayer());
+
         }
 
     }
@@ -54,7 +69,11 @@ public class hamburger : enemies
         an.SetBool("attacks", true);
         if(attackbool == true)
         {
-        player.health--;
+            //player.GetComponent<player>().health--;
+            righthit.gameObject.active = true;
+            lefthit.gameObject.active = true;
+            StartCoroutine(attacksplayer());
+
         }
         
 
@@ -68,9 +87,14 @@ public class hamburger : enemies
     IEnumerator attacksplayer()
     {
         attackbool = false;
+        righthit.gameObject.active = false;
+        lefthit.gameObject.active = false;
 
-        yield return new WaitForSeconds(0.7f);
+
+        yield return new WaitForSeconds(0.5f);
         attackbool = true;
+        righthit.gameObject.active = true;
+        lefthit.gameObject.active = true;
 
     }
 }
