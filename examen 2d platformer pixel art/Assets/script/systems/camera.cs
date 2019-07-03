@@ -40,8 +40,9 @@ public class camera : MonoBehaviour
                 this.transform.position = Vector3.Lerp(this.transform.position, newpos, 1);
         }else if (lockcamera)
         {
-            var newpos = new Vector3(this.transform.position.x, this.transform.position.y, this.transform.position.z);
-            this.transform.position = Vector3.Lerp(this.transform.position, newpos, 1);
+            var oldpos = new Vector3(this.transform.position.x, this.transform.position.y, this.transform.position.z);
+            var newpos = new Vector3(this.transform.position.x, playerposition.position.y, this.transform.position.z);
+            this.transform.position = Vector3.Lerp(this.transform.position, oldpos, 1);
         }
         
 
