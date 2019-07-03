@@ -14,8 +14,8 @@ public class hamburger : enemies
      startdis = 1.1f;
      enddis = 10;
      attackdis = 1.5f;
-        player = GetComponent<player>();
-        player = GameObject.FindObjectOfType<player>();
+        //player = GetComponent<player>();
+       // player = GameObject.FindObjectOfType<player>();
 
 
 }
@@ -54,7 +54,7 @@ public class hamburger : enemies
         an.SetBool("attacks", true);
         if(attackbool == true)
         {
-        player.health --;
+        player.health--;
         }
         
 

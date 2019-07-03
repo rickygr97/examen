@@ -8,6 +8,10 @@ public class camera : MonoBehaviour
     //bool golow;
     //bool gohigh;
     //bool gogrond;
+   public bool playerfollow;
+   public bool lockcamera;
+
+
 
 
 
@@ -18,6 +22,10 @@ public class camera : MonoBehaviour
         //golow = true;
         //gohigh = true;
         //gogrond = true;
+        playerfollow = true;
+        lockcamera = false;
+
+
 
 
 
@@ -26,8 +34,16 @@ public class camera : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        var newpos = new Vector3(playerposition.position.x, this.transform.position.y, this.transform.position.z);
-        this.transform.position = Vector3.Lerp(this.transform.position, newpos, 1);
+        if (playerfollow)
+        {
+            var newpos = new Vector3(playerposition.position.x, this.transform.position.y, this.transform.position.z);
+                this.transform.position = Vector3.Lerp(this.transform.position, newpos, 1);
+        }else if (lockcamera)
+        {
+            var newpos = new Vector3(this.transform.position.x, this.transform.position.y, this.transform.position.z);
+            this.transform.position = Vector3.Lerp(this.transform.position, newpos, 1);
+        }
+        
 
         //float dis = Vector2.Distance(transform.position, playerposition.position);
         //var posy = new Vector3(transform.position.x, playerposition.position.y, transform.position.z);

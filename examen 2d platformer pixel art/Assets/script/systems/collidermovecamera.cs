@@ -7,13 +7,20 @@ public class collidermovecamera : MonoBehaviour
     public float yhight;
     public camera camara;
     public GameObject player;
+   public bool locks;
+    public camera cameras;
+
+
 
 
 
     // Start is called before the first frame update
     void Start()
     {
-        
+        //locks = false;
+        cameras = GetComponent<camera>();
+
+
     }
 
     // Update is called once per frame
@@ -35,6 +42,16 @@ public class collidermovecamera : MonoBehaviour
             //{
             //    camara.transform.position = Vector3.Lerp(this.transform.position, oldpos, 0.05f);
             //}
+            if (locks)
+            {
+                camara.GetComponent<camera>().lockcamera = true;
+                camara.GetComponent<camera>().playerfollow = false;
+
+            }if(locks == false)
+            {
+                camara.GetComponent<camera>().lockcamera = false;
+                camara.GetComponent<camera>().playerfollow = true;
+            }
         }
     }
 }
