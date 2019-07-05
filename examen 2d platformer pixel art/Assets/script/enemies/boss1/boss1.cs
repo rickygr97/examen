@@ -15,4 +15,12 @@ public class boss1 : MonoBehaviour
     {
         
     }
+    void OnCollisionEnter2D(Collision2D col)
+    {
+        if (col.gameObject.GetComponent<player>())
+        {
+            col.gameObject.GetComponent<player>().health--;
+
+        }
+    }
 }
