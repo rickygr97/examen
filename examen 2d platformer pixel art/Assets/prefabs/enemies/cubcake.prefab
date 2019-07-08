@@ -1,5 +1,35 @@
 %YAML 1.1
 %TAG !u! tag:unity3d.com,2011:
+--- !u!1 &1986790483
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 1986790484}
+  m_Layer: 9
+  m_Name: ise
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &1986790484
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1986790483}
+  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
+  m_LocalPosition: {x: 0.677, y: -0.315, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_Children: []
+  m_Father: {fileID: 5692672877743945159}
+  m_RootOrder: 1
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &5692672877447100466
 GameObject:
   m_ObjectHideFlags: 0
@@ -9,7 +39,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 5692672877447100467}
-  m_Layer: 0
+  m_Layer: 9
   m_Name: grondscheck
   m_TagString: Untagged
   m_Icon: {fileID: 1206586993520771344, guid: 0000000000000000d000000000000000, type: 0}
@@ -44,7 +74,8 @@ GameObject:
   - component: {fileID: 5692672877743945160}
   - component: {fileID: 5692672877743945156}
   - component: {fileID: 5692672877743945157}
-  m_Layer: 0
+  - component: {fileID: 6927366499648041759}
+  m_Layer: 9
   m_Name: cubcake
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -63,6 +94,7 @@ Transform:
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children:
   - {fileID: 5692672877447100467}
+  - {fileID: 1986790484}
   m_Father: {fileID: 0}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
@@ -181,6 +213,10 @@ MonoBehaviour:
   grondwatis:
     serializedVersion: 2
     m_Bits: 256
+  health: 0
+  ise: {fileID: 5200969957289237736, guid: 6872969d8ef645c45830d6039c0d7bcb, type: 3}
+  iseposition: {fileID: 1986790484}
+  isespeed: 15
 --- !u!95 &5692672877743945157
 Animator:
   serializedVersion: 3
@@ -200,3 +236,23 @@ Animator:
   m_HasTransformHierarchy: 1
   m_AllowConstantClipSamplingOptimization: 1
   m_KeepAnimatorControllerStateOnDisable: 0
+--- !u!114 &6927366499648041759
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 5692672877743945163}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 18104ffaf2d36fb498fe9d45bf6159c4, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  target: {fileID: 0}
+  enemieswalksspeed: 0
+  grondok: {fileID: 5692672877447100467}
+  okradius: 1
+  grondwatis:
+    serializedVersion: 2
+    m_Bits: 256
+  health: 0

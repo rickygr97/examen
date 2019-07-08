@@ -30,6 +30,17 @@ public class player : MonoBehaviour
     public GameObject health_hearts3;
     public int hearts;
 
+    private float waitbtwattacks;
+    public float starttimebtwattack;
+    public Transform attackpos;
+    public float attackrange;
+    public LayerMask whatisEnemy;
+    public int damage;
+
+
+
+
+
 
 
 
@@ -95,6 +106,27 @@ public class player : MonoBehaviour
         {
             hearts = 3;
             health = 3;
+
+        }
+        if(waitbtwattacks <= 0)
+        {
+            if(Input.GetKeyDown(KeyCode.Space)|| Input.GetMouseButtonDown(0))
+            {
+                Collider2D[] enemiesToDamage = Physics2D.OverlapCircleAll(attackpos.position,attackrange, whatisEnemy);
+                for (int i = 0; i < enemiesToDamage.Length; i++)
+                {
+                    enemiesToDamage[i].GetComponent<enemies>().health -= damage;
+                    //enemiesToDamage[i].GetComponent<milkshake>().health -= damage;
+                    //enemiesToDamage[i].GetComponent<cubcake>().health -= damage;
+                    waitbtwattacks = starttimebtwattack;
+                }
+            }
+            
+
+        }
+        else
+        {
+            waitbtwattacks -= Time.deltaTime;
 
         }
         isopgrond = Physics2D.OverlapCircle(grondok.position, okradius, grondwatis);
@@ -166,6 +198,12 @@ public class player : MonoBehaviour
         Vector3 scaler = transform.localScale;
         scaler.x *= -1;
         transform.localScale = scaler;
+
+    }
+    void OnDrawGizmosSelected()
+    {
+        Gizmos.color = Color.blue;
+        Gizmos.DrawWireSphere(attackpos.position, attackrange);
 
     }
 }

@@ -8,6 +8,8 @@ public class hamburger : enemies
     bool attackbool;
     public GameObject righthit;
     public GameObject lefthit;
+    //public int health;
+
 
 
 
@@ -23,6 +25,8 @@ public class hamburger : enemies
         righthit.gameObject.active = true;
         lefthit.gameObject.active = true;
         attackbool = true;
+        health = 3;
+
 
 
 
@@ -43,6 +47,11 @@ public class hamburger : enemies
         if (attackbool)
         {
             StartCoroutine(attacksplayer());
+
+        }
+        if (health <= 0)
+        {
+            Destroy(this.gameObject);
 
         }
 

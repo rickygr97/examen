@@ -28,6 +28,8 @@ public class enemies : MonoBehaviour
     public Transform grondok;
     public float okradius;
     public LayerMask grondwatis;
+    public int health;
+
 
 
 
@@ -44,6 +46,8 @@ public class enemies : MonoBehaviour
 
 
         enemieswalksspeed = 3;
+        health = 3;
+
 
     }
 

@@ -9,6 +9,8 @@ public class cubcake : enemies
     public int isespeed = 15;
     bool leftorright;
     bool spawn;
+   // public int health;
+
 
 
 
@@ -20,6 +22,8 @@ public class cubcake : enemies
         enddis = 10;
         attackdis = 5;
         spawn = true;
+        health = 3;
+
 
     }
     public override void Update()
@@ -36,6 +40,11 @@ public class cubcake : enemies
         {
             flipcharacter();
             leftorright = false;
+
+        }
+        if (health <= 0)
+        {
+            Destroy(this.gameObject);
 
         }
     }

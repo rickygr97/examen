@@ -16,7 +16,7 @@ GameObject:
   - component: {fileID: 2549100128145241656}
   m_Layer: 0
   m_Name: boss1
-  m_TagString: Untagged
+  m_TagString: boss1
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -98,7 +98,7 @@ BoxCollider2D:
   m_IsTrigger: 0
   m_UsedByEffector: 0
   m_UsedByComposite: 0
-  m_Offset: {x: 0.022019148, y: -0.58351564}
+  m_Offset: {x: 0.022019148, y: -0.56531245}
   m_SpriteTilingProperty:
     border: {x: 0, y: 0, z: 0, w: 0}
     pivot: {x: 0.5, y: 0.5}
@@ -109,7 +109,7 @@ BoxCollider2D:
     adaptiveTiling: 0
   m_AutoTiling: 0
   serializedVersion: 2
-  m_Size: {x: 1.3014598, y: 1.1032858}
+  m_Size: {x: 1.3014598, y: 1.0668794}
   m_EdgeRadius: 0
 --- !u!50 &1293469237558047488
 Rigidbody2D:
@@ -163,6 +163,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 40a00c955eaf45f469f02fa8e133c8ff, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  slider: {fileID: 0}
+  health: 10
 --- !u!1 &1293469238517268680
 GameObject:
   m_ObjectHideFlags: 0

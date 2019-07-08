@@ -11,7 +11,7 @@ GameObject:
   - component: {fileID: 315989996}
   - component: {fileID: 315989998}
   - component: {fileID: 315989997}
-  m_Layer: 0
+  m_Layer: 9
   m_Name: right
   m_TagString: Untagged
   m_Icon: {fileID: 1206586993520771344, guid: 0000000000000000d000000000000000, type: 0}
@@ -81,7 +81,7 @@ GameObject:
   - component: {fileID: 2081036174}
   - component: {fileID: 2081036176}
   - component: {fileID: 2081036175}
-  m_Layer: 0
+  m_Layer: 9
   m_Name: left
   m_TagString: Untagged
   m_Icon: {fileID: 1206586993520771344, guid: 0000000000000000d000000000000000, type: 0}
@@ -149,7 +149,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 761899384867717793}
-  m_Layer: 0
+  m_Layer: 9
   m_Name: gronddettect
   m_TagString: Untagged
   m_Icon: {fileID: 1206586993520771344, guid: 0000000000000000d000000000000000, type: 0}
@@ -184,7 +184,8 @@ GameObject:
   - component: {fileID: 761899385521729902}
   - component: {fileID: 761899385521729899}
   - component: {fileID: 2586459813290159036}
-  m_Layer: 0
+  - component: {fileID: 9002044812846055889}
+  m_Layer: 9
   m_Name: hamburger1
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -255,7 +256,7 @@ SpriteRenderer:
   m_AdaptiveModeThreshold: 0.5
   m_SpriteTileMode: 0
   m_WasSpriteAssigned: 1
-  m_MaskInteraction: 0
+  m_MaskInteraction: 1
   m_SpriteSortPoint: 0
 --- !u!61 &761899385521729897
 BoxCollider2D:
@@ -342,6 +343,27 @@ MonoBehaviour:
   grondwatis:
     serializedVersion: 2
     m_Bits: 256
+  health: 0
   player: {fileID: 0}
   righthit: {fileID: 315989995}
   lefthit: {fileID: 2081036173}
+--- !u!114 &9002044812846055889
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 761899385521729901}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 18104ffaf2d36fb498fe9d45bf6159c4, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  target: {fileID: 0}
+  enemieswalksspeed: 0
+  grondok: {fileID: 761899384867717793}
+  okradius: 1
+  grondwatis:
+    serializedVersion: 2
+    m_Bits: 256
+  health: 0

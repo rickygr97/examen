@@ -4,12 +4,16 @@ using UnityEngine;
 
 public class milkshake : enemies
 {
+   // public int health;
+
     public override void Start()
     {
         base.Start();
         startdis = 4.5f;
         enddis = 10;
         attackdis = 5;
+        health = 3;
+
     }
     public override void Update()
     {
@@ -21,6 +25,11 @@ public class milkshake : enemies
         if (target.transform.position.x < this.gameObject.transform.position.x && facingleft == true)
         {
             flipcharacter();
+        }
+        if(health <= 0)
+        {
+            Destroy(this.gameObject);
+
         }
     }
     public override void animationwalks()
