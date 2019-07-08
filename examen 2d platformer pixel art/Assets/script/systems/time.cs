@@ -16,7 +16,7 @@ public class time : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
-        timer = 100;
+        timer = 300;
 
     }
 

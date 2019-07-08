@@ -2,6 +2,8 @@
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.SceneManagement;
+using UnityEngine.UI;
+
 
 
 public class player : MonoBehaviour
@@ -24,6 +26,8 @@ public class player : MonoBehaviour
     Animator an;
 
     public int coins;
+    public Text textcoins;
+
     public int health;
     public GameObject health_hearts1;
     public GameObject health_hearts2;
@@ -36,6 +40,15 @@ public class player : MonoBehaviour
     public float attackrange;
     public LayerMask whatisEnemy;
     public int damage;
+
+    public GameObject shoot;
+    public Transform shootpos;
+    public bool shootingactive;
+    public int speeddrop;
+
+
+
+
 
 
 
@@ -61,6 +74,10 @@ public class player : MonoBehaviour
 
         health = 3;
         hearts = 3;
+        shootingactive = false;
+        speeddrop = 4;
+
+
 
 
 
@@ -69,6 +86,8 @@ public class player : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
+        textcoins.text = " "+coins;
+
         if(hearts == 3 && health ==2 )
         {
             health_hearts3.SetActive(false);
@@ -106,6 +125,11 @@ public class player : MonoBehaviour
         {
             hearts = 3;
             health = 3;
+
+        }
+        if (shootingactive && waitbtwattacks <= 0)
+        {
+            shooting();
 
         }
         if(waitbtwattacks <= 0)
@@ -205,5 +229,25 @@ public class player : MonoBehaviour
         Gizmos.color = Color.blue;
         Gizmos.DrawWireSphere(attackpos.position, attackrange);
 
+    }
+    public void shooting()
+    {
+        if(Input.GetMouseButtonDown(1)|| Input.GetKeyDown(KeyCode.B))
+        {
+            if(facingleft == true)
+            {
+           var clone = Instantiate(shoot, shootpos.position, Quaternion.Euler(0,0,90));
+            clone.GetComponent<Rigidbody2D>().velocity = Vector2.right * speeddrop;
+            }
+            if (facingleft == false)
+            {
+                var clone = Instantiate(shoot, shootpos.position, Quaternion.Euler(0,0,270));
+                clone.GetComponent<Rigidbody2D>().velocity = Vector2.left * speeddrop;
+            }
+
+
+            waitbtwattacks = starttimebtwattack;
+
+        }
     }
 }
