@@ -4,7 +4,13 @@ using UnityEngine;
 
 public class milkshake : enemies
 {
-   // public int health;
+    // public int health;
+
+    public GameObject water;
+    public Transform waterposition;
+    public int waterspeed = 4;
+    bool spawn;
+    public Transform playerpos;
 
     public override void Start()
     {
@@ -13,6 +19,8 @@ public class milkshake : enemies
         enddis = 10;
         attackdis = 5;
         health = 3;
+        spawn = true;
+
 
     }
     public override void Update()
@@ -49,11 +57,34 @@ public class milkshake : enemies
     {
         base.animationattack();
         an.SetBool("attacks", true);
+        if (facingleft == false && spawn == true)
+        {
+            StartCoroutine(waitfornextspawnise());
+
+            var isepre2 = Instantiate(water, waterposition.position, Quaternion.identity);
+            isepre2.GetComponent<Rigidbody2D>().velocity = (playerpos.position - transform.position).normalized * waterspeed;
+
+        }
+        else if (facingleft == true && spawn == true)
+        {
+            StartCoroutine(waitfornextspawnise());
+
+            var isepre = Instantiate(water, waterposition.position, Quaternion.identity);
+            isepre.GetComponent<Rigidbody2D>().velocity = (playerpos.position - transform.position).normalized * waterspeed;
+
+        }
     }
     public override void animationattack2()
     {
         base.animationattack2();
         an.SetBool("attacks", false);
         an.SetBool("idle", true);
+    }
+    IEnumerator waitfornextspawnise()
+    {
+        spawn = false;
+        yield return new WaitForSeconds(3);
+        spawn = true;
+
     }
 }

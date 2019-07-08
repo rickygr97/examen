@@ -53648,6 +53648,11 @@ PrefabInstance:
       propertyPath: m_Name
       value: milkshake
       objectReference: {fileID: 0}
+    - target: {fileID: 4800803890639908763, guid: eed4fcb23e452a1438b292fed5b1af92,
+        type: 3}
+      propertyPath: playerpos
+      value: 
+      objectReference: {fileID: 969829594}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: eed4fcb23e452a1438b292fed5b1af92, type: 3}
 --- !u!1001 &5692672877202586670
