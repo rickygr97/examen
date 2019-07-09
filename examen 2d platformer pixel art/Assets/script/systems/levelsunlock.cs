@@ -44,4 +44,12 @@ public class levelsunlock : MonoBehaviour
         nummer += nummererbij;
 
     }
+    public void level22()
+    {
+        level2.active = false;
+    }
+    public void level33()
+    {
+        level3.active = false;
+    }
 }

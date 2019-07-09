@@ -6,12 +6,12 @@ using UnityEngine.SceneManagement;
 
 public class eindespel : MonoBehaviour
 {
-  //  public levelsunlock levellocks;
+    public levelsunlock levellocks;
 
     // Start is called before the first frame update
     void Start()
     {
-       // levellocks = GameObject.FindObjectOfType(typeof(levelsunlock)) as levelsunlock;
+        levellocks = GameObject.FindObjectOfType(typeof(levelsunlock)) as levelsunlock;
 
     }
 
@@ -24,8 +24,9 @@ public class eindespel : MonoBehaviour
     {
         if (col.gameObject.GetComponent<player>())
         {
-        //    levelsunlock.nummers(1);
+            //    levelsunlock.nummers(1);
             levelsunlock.nummer++;
+
 
 
 
