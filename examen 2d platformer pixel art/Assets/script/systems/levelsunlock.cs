@@ -24,6 +24,8 @@ public class levelsunlock : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
+        Debug.Log(nummer);
+
         switch (nummer)
         {
             case 1:

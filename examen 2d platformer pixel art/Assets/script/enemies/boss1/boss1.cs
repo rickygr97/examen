@@ -2,6 +2,8 @@
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
+using UnityEngine.SceneManagement;
+
 
 
 public class boss1 : MonoBehaviour
@@ -22,7 +24,15 @@ public class boss1 : MonoBehaviour
     {
         slider.value = health;
 
-        health -= Time.deltaTime;
+       // health -= Time.deltaTime;
+       if(health <= 0)
+        {
+
+            SceneManager.LoadScene(0);
+
+            Destroy(this.gameObject);
+
+        }
 
     }
     void OnCollisionEnter2D(Collision2D col)

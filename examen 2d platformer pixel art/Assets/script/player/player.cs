@@ -45,6 +45,8 @@ public class player : MonoBehaviour
     public Transform shootpos;
     public bool shootingactive;
     public int speeddrop;
+    public einde einde;
+
 
 
 
@@ -76,6 +78,10 @@ public class player : MonoBehaviour
         hearts = 3;
         shootingactive = false;
         speeddrop = 4;
+        einde = GameObject.FindObjectOfType(typeof(einde)) as einde;
+
+
+
 
 
 
@@ -86,7 +92,14 @@ public class player : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        textcoins.text = " "+coins;
+        textcoins.text = " "+coins + " /8 ";
+        if(coins == 8)
+        {
+          //  einde.end();
+            einde.GetComponent<einde>().end();
+
+
+        }
 
         if(hearts == 3 && health ==2 )
         {

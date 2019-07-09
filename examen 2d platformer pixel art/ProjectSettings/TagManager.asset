@@ -6,6 +6,7 @@ TagManager:
   tags:
   - grond
   - boss1
+  - einde
   layers:
   - Default
   - TransparentFX

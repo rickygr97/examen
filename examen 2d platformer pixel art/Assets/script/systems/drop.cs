@@ -20,8 +20,16 @@ public class drop : MonoBehaviour
         if (col.gameObject.GetComponent<enemies>())
         {
             col.gameObject.GetComponent<enemies>().health--;
+            
 
 
+
+            Destroy(this.gameObject);
+
+        }
+        if(col.gameObject.GetComponent<boss1>())
+        {
+col.gameObject.GetComponent<boss1>().health--;
             Destroy(this.gameObject);
 
         }
