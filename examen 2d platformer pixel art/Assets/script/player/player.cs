@@ -155,7 +155,9 @@ public class player : MonoBehaviour
                 for (int i = 0; i < enemiesToDamage.Length; i++)
                 {
                     enemiesToDamage[i].GetComponent<enemies>().health -= damage;
-                    Instantiate(splash, attackpos.position,Quaternion.identity);
+                   var clone = Instantiate(splash, attackpos.position,Quaternion.identity);
+                    Destroy(clone, 0.4f);
+
 
                     //enemiesToDamage[i].GetComponent<milkshake>().health -= damage;
                     //enemiesToDamage[i].GetComponent<cubcake>().health -= damage;
