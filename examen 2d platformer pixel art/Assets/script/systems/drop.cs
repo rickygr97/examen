@@ -4,6 +4,8 @@ using UnityEngine;
 
 public class drop : MonoBehaviour
 {
+    public GameObject splash;
+
     // Start is called before the first frame update
     void Start()
     {
@@ -20,6 +22,8 @@ public class drop : MonoBehaviour
         if (col.gameObject.GetComponent<enemies>())
         {
             col.gameObject.GetComponent<enemies>().health--;
+            Instantiate(splash,col.gameObject.transform.position,Quaternion.identity);
+
             
 
 
@@ -30,6 +34,8 @@ public class drop : MonoBehaviour
         if(col.gameObject.GetComponent<boss1>())
         {
 col.gameObject.GetComponent<boss1>().health--;
+            Instantiate(splash,col.gameObject.transform.position,Quaternion.identity);
+
             Destroy(this.gameObject);
 
         }
