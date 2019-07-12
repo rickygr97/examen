@@ -36,7 +36,7 @@ public class camera : MonoBehaviour
     {
         if (playerfollow)
         {
-            var newpos = new Vector3(playerposition.position.x, this.transform.position.y, this.transform.position.z);
+            var newpos = new Vector3(playerposition.position.x, playerposition.position.y, this.transform.position.z);
                 this.transform.position = Vector3.Lerp(this.transform.position, newpos, 1);
         }else if (lockcamera)
         {
