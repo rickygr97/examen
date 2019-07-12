@@ -154,7 +154,17 @@ public class player : MonoBehaviour
                 Collider2D[] enemiesToDamage = Physics2D.OverlapCircleAll(attackpos.position,attackrange, whatisEnemy);
                 for (int i = 0; i < enemiesToDamage.Length; i++)
                 {
-                    enemiesToDamage[i].GetComponent<enemies>().health -= damage;
+                    if (enemiesToDamage[i].GetComponent<enemies>())
+                    {
+                            enemiesToDamage[i].GetComponent<enemies>().health -= damage;
+                    }
+                    if (enemiesToDamage[i].GetComponent<boss1>())
+                    {
+                        enemiesToDamage[i].GetComponent<boss1>().health -= damage;
+                    }
+
+                    
+
                    var clone = Instantiate(splash, attackpos.position,Quaternion.identity);
                     Destroy(clone, 0.4f);
 
