@@ -254,7 +254,7 @@ MonoBehaviour:
   health_hearts2: {fileID: 0}
   health_hearts3: {fileID: 0}
   hearts: 3
-  starttimebtwattack: 0.7
+  starttimebtwattack: 0.4
   attackpos: {fileID: 1103693481}
   attackrange: 1
   whatisEnemy:
