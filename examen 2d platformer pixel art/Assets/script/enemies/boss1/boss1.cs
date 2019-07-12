@@ -40,6 +40,7 @@ public class boss1 : MonoBehaviour
         if (col.gameObject.GetComponent<player>())
         {
             col.gameObject.GetComponent<player>().health--;
+            col.gameObject.GetComponent<player>().smak();
 
         }
     }

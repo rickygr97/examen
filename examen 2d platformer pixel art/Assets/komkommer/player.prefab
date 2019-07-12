@@ -267,6 +267,8 @@ MonoBehaviour:
   speeddrop: 0
   einde: {fileID: 0}
   splash: {fileID: 4874440805886399220, guid: e4792c599ee9f4e438cc11a1f84bc345, type: 3}
+  smak1: {fileID: 0}
+  smak111: {fileID: 0}
 --- !u!50 &3429531362776055248
 Rigidbody2D:
   serializedVersion: 4

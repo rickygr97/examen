@@ -47,6 +47,9 @@ public class player : MonoBehaviour
     public int speeddrop;
     public einde einde;
     public GameObject splash;
+    public AudioSource smak1;
+    public AudioSource smak111;
+
 
 
 
@@ -162,6 +165,7 @@ public class player : MonoBehaviour
                     {
                         enemiesToDamage[i].GetComponent<boss1>().health -= damage;
                     }
+                    smak();
 
                     
 
@@ -278,5 +282,12 @@ public class player : MonoBehaviour
             waitbtwattacks = starttimebtwattack;
 
         }
+    }
+    public void smak()
+    {
+        smak1.Play();
+       // smak111.Play();
+
+
     }
 }

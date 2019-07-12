@@ -24,9 +24,10 @@ public class drop : MonoBehaviour
             col.gameObject.GetComponent<enemies>().health--;
            var clone =  Instantiate(splash,col.gameObject.transform.position,Quaternion.identity);
             Destroy(clone, 0.4f);
+            col.gameObject.GetComponent<player>().smak();
 
 
-            
+
 
 
 
@@ -38,6 +39,7 @@ public class drop : MonoBehaviour
 col.gameObject.GetComponent<boss1>().health--;
             var clone = Instantiate(splash,col.gameObject.transform.position,Quaternion.identity);
             Destroy(clone, 0.4f);
+            col.gameObject.GetComponent<player>().smak();
 
 
             Destroy(this.gameObject);
