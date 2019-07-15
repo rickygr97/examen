@@ -49,6 +49,12 @@ public class player : MonoBehaviour
     public GameObject splash;
     public AudioSource smak1;
     public AudioSource smak111;
+    public float runtime;
+    public float jumpinput;
+    bool jumpbool = true;
+
+
+
 
 
 
@@ -84,6 +90,8 @@ public class player : MonoBehaviour
         shootingactive = false;
         speeddrop = 4;
         einde = GameObject.FindObjectOfType(typeof(einde)) as einde;
+        runtime = 1.5f;
+
 
 
 
@@ -152,7 +160,7 @@ public class player : MonoBehaviour
         }
         if(waitbtwattacks <= 0)
         {
-            if(Input.GetKeyDown(KeyCode.Space)|| Input.GetMouseButtonDown(0))
+            if(Input.GetKeyDown(KeyCode.Space)|| Input.GetMouseButtonDown(0) || Input.GetAxisRaw("Fire3") == 1)
             {
                 Collider2D[] enemiesToDamage = Physics2D.OverlapCircleAll(attackpos.position,attackrange, whatisEnemy);
                 for (int i = 0; i < enemiesToDamage.Length; i++)
@@ -187,19 +195,34 @@ public class player : MonoBehaviour
 
         }
         isopgrond = Physics2D.OverlapCircle(grondok.position, okradius, grondwatis);
+        //if(jumpinput < Input.GetAxis("Vertical") && jumpsjumpies >= 0)
+        //{
+        //    rb.velocity = Vector2.up * jumpforce;
+        //    jumpsjumpies--;
+        //}else if (jumpinput <  Input.GetAxis("Vertical") && jumpsjumpies <= 0 && isopgrond == true)
+        //{
+        //    rb.velocity = Vector2.up * jumpforce;
+        //}
 
-        if(Input.GetKeyDown(KeyCode.W) && jumpsjumpies >0|| Input.GetKeyDown(KeyCode.UpArrow) && jumpsjumpies >0)
+            if (Input.GetKeyDown(KeyCode.W) && jumpsjumpies > 0 || Input.GetKeyDown(KeyCode.UpArrow) && jumpsjumpies > 0 ||/* jumpinput < Input.GetAxis("Vertical")*/ Input.GetAxisRaw("Jump") ==1 && jumpsjumpies > 0 && jumpbool == true)
         {
             rb.velocity = Vector2.up * jumpforce;
             jumpsjumpies--;
+                jumpbool = false;
+                StartCoroutine(waitforjump());
 
-        }
-        else if (Input.GetKeyDown(KeyCode.W) && jumpsjumpies<=0 && isopgrond == true|| Input.GetKeyDown(KeyCode.UpArrow) && jumpsjumpies <= 0 && isopgrond == true)
+
+            }
+        else if (Input.GetKeyDown(KeyCode.W) && jumpsjumpies <= 0 && isopgrond == true || Input.GetKeyDown(KeyCode.UpArrow) && jumpsjumpies <= 0 && isopgrond == true || /*jumpinput < Input.GetAxis("Vertical")*/  Input.GetAxisRaw("Jump") == 1 && jumpsjumpies <= 0 && jumpsjumpies <=0 && isopgrond ==true && jumpbool == true)
         {
             rb.velocity = Vector2.up * jumpforce;
-            
+                jumpbool = false;
+            StartCoroutine(waitforjump());
+
+
 
         }
+
         if (isopgrond == true)
         {
             jumpsjumpies = extrajump;
@@ -207,7 +230,15 @@ public class player : MonoBehaviour
         }
 
         #region movement
-        moveinput = Input.GetAxis("Horizontal");
+        if (Input.GetKey(KeyCode.LeftShift) || Input.GetAxisRaw("Fire2") ==1)
+        {
+            moveinput = Input.GetAxis("Horizontal")*runtime;
+        }
+        else
+        {
+                moveinput = Input.GetAxis("Horizontal");
+        }
+        
         rb.velocity = new Vector2(moveinput * speed, rb.velocity.y);
         #endregion
         #region characterleft
@@ -265,7 +296,7 @@ public class player : MonoBehaviour
     }
     public void shooting()
     {
-        if(Input.GetMouseButtonDown(1)|| Input.GetKeyDown(KeyCode.B))
+        if(Input.GetMouseButtonDown(1)|| Input.GetKeyDown(KeyCode.B) || Input.GetAxisRaw("Fire1") ==1)
         {
             if(facingleft == true)
             {
@@ -288,6 +319,12 @@ public class player : MonoBehaviour
         smak1.Play();
        // smak111.Play();
 
+
+    }
+    IEnumerator waitforjump()
+    {
+        yield return new WaitForSeconds(0.5f);
+        jumpbool = true;
 
     }
 }
