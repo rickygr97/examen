@@ -5,11 +5,14 @@ using UnityEngine;
 public class coins : MonoBehaviour
 {
     player player;
+   // sounds soundss;
+
 
     // Start is called before the first frame update
     void Start()
     {
         player = GetComponent<player>();
+       // soundss = GetComponent<sounds>();
 
     }
 
@@ -23,6 +26,10 @@ public class coins : MonoBehaviour
         if (col.gameObject.GetComponent<player>())
         {
             col.gameObject.GetComponent<player>().coins += 1;
+           // soundss.coins();
+            this.gameObject.GetComponent<sounds>().coins();
+
+
 
             //player.coins += 1;
             Destroy(this.gameObject);

@@ -5,11 +5,14 @@ using UnityEngine;
 public class drop : MonoBehaviour
 {
     public GameObject splash;
+    player player;
+
 
     // Start is called before the first frame update
     void Start()
     {
-        
+        player = gameObject.GetComponent<player>();
+
     }
 
     // Update is called once per frame
@@ -24,14 +27,15 @@ public class drop : MonoBehaviour
             col.gameObject.GetComponent<enemies>().health--;
            var clone =  Instantiate(splash,col.gameObject.transform.position,Quaternion.identity);
             Destroy(clone, 0.4f);
-            col.gameObject.GetComponent<player>().smak();
-
-
-
-
-
-
             Destroy(this.gameObject);
+           player.gameObject.GetComponent<player>().smak();
+
+
+
+
+
+
+            
 
         }
         if(col.gameObject.GetComponent<boss1>())
@@ -39,10 +43,11 @@ public class drop : MonoBehaviour
 col.gameObject.GetComponent<boss1>().health--;
             var clone = Instantiate(splash,col.gameObject.transform.position,Quaternion.identity);
             Destroy(clone, 0.4f);
-            col.gameObject.GetComponent<player>().smak();
-
-
             Destroy(this.gameObject);
+           player.gameObject.GetComponent<player>().smak();
+
+
+           
 
         }
     }
